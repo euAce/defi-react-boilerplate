@@ -1,3 +1,4 @@
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
@@ -11,9 +12,9 @@ export const Route = createRootRoute({
         <Link to="/about" className="[&.active]:font-bold">
           About
         </Link>
-        <Link to="/debridge" className="[&.active]:font-bold">
-          Debridge
-        </Link>
+      </div>
+      <div className="p-2 flex gap-2">
+        <ConnectButton />
       </div>
       <hr />
       <Outlet />

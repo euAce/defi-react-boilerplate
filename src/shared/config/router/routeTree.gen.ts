@@ -11,17 +11,10 @@
 // Import Routes
 
 import { Route as rootRoute } from './../../../app/router/__root'
-import { Route as DebridgeImport } from './../../../app/router/debridge'
 import { Route as AboutImport } from './../../../app/router/about'
 import { Route as IndexImport } from './../../../app/router/index'
 
 // Create/Update Routes
-
-const DebridgeRoute = DebridgeImport.update({
-  id: '/debridge',
-  path: '/debridge',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const AboutRoute = AboutImport.update({
   id: '/about',
@@ -53,13 +46,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
-    '/debridge': {
-      id: '/debridge'
-      path: '/debridge'
-      fullPath: '/debridge'
-      preLoaderRoute: typeof DebridgeImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -68,41 +54,36 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/debridge': typeof DebridgeRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/debridge': typeof DebridgeRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/debridge': typeof DebridgeRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/debridge'
+  fullPaths: '/' | '/about'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/debridge'
-  id: '__root__' | '/' | '/about' | '/debridge'
+  to: '/' | '/about'
+  id: '__root__' | '/' | '/about'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  DebridgeRoute: typeof DebridgeRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  DebridgeRoute: DebridgeRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,8 +97,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about",
-        "/debridge"
+        "/about"
       ]
     },
     "/": {
@@ -125,9 +105,6 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
-    },
-    "/debridge": {
-      "filePath": "debridge.tsx"
     }
   }
 }

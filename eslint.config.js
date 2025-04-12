@@ -36,6 +36,7 @@ export default [
     rules: {
       "no-console": "off",
       "prettier/prettier": "error",
+      "no-unused-vars": ["warn"],
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
